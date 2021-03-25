@@ -1,4 +1,6 @@
-(() => {
+import BotaoConclui from './componentes/concluiTarefa.js';
+import BotaoExcluir from './componentes/excluiTarefa.js';
+
     const criarTarefa = (evento) => {
 
         evento.preventDefault();
@@ -17,34 +19,13 @@
         tarefa.innerHTML = conteudo;
     
         tarefa.appendChild(BotaoConclui());
+        tarefa.appendChild(BotaoExcluir());
+
         lista.appendChild(tarefa);
         input.value = '';
     }
-    
-    
+     
     const novaTarefa = document.querySelector('[data-form-button]');
     
-    
     novaTarefa.addEventListener('click', criarTarefa);
-    
-    
-    const BotaoConclui = () => {
-        const botaoConclui = document.createElement('button');
-    
-        botaoConclui.classList.add('check-button');
-        botaoConclui.innerText = 'Done';
-    
-        botaoConclui.addEventListener('click', concluirTarefa);
-    
-        return botaoConclui;
-    };
-    
-    const concluirTarefa = (evento) => {
-        const botaoConclui = evento.target;
-    
-        const tarefaCompleta = botaoConclui.parentElement; //pai do botao
-    
-        tarefaCompleta.classList.toggle('done');
-    };
-    
-})()
+
